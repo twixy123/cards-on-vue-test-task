@@ -7,7 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
+    "@jamescoyle/vue-icon": "^0.1.0",
+    "@mdi/font": "^5.8.55",
+    "@mdi/js": "^5.8.55",
     "core-js": "^3.6.5",
+    "materialize-css": "^1.0.0-rc.2",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
