@@ -1,78 +1,38 @@
 <template>
   <div class="body">
-    <span class="mdi mdi-new-box"></span>
-    <TasksList
-      v-bind:tasks="tasks"
-      v-bind:colors="colors"
-      v-bind:icons="icons"
+    <FilterTasks />
+    <TasksList v-if="tasks.length"
+               v-bind:tasks="tasks"
+               v-bind:colors="colors"
+               v-bind:icons="icons"
     />
+    <p class="no_tasks" v-else>Нет записей</p>
   </div>
 </template>
 
 <script>
-  import TasksList from "../components/TasksList";
-  import { mdiAccount, mdiNewBox, mdiAccountCheck, mdiAccountPlus, mdiClock, mdiPauseCircleOutline, mdiEyeOutline, mdiBackupRestore, mdiCheckCircleOutline} from '@mdi/js'
+  import TasksList from "@/components/TasksList";
+  import FilterTasks from "@/components/FilterTasks";
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
-    data(){
-      return{
-        tasks:[],
-        colors: {
-          status: [
-            '#ffffff',
-            '#B2BEC3',
-            '#B33771',
-            '#00CEC9',
-            '#74B9FF',
-            '#FBC531',
-            '#A29BFE',
-            '#E17055',
-            '#00B894',
-          ],
-          type:[
-            '#B2BEC3',
-            '#6C5CE7',
-            '#E17055',
-            '#D6A2E8',
-          ],
-          platform:[
-            '#ffffff',
-            '#A29BFE',
-            '#6C5CE7',
-            '#B2BEC3',
-            '#00B894',
-          ],
-          priority:[
-            '#ffffff',
-            '#E17055',
-            '#00B894',
-            '#FBC531',
-          ]
-        },
-        icons:[
-          mdiAccount,
-          mdiNewBox,
-          mdiAccountPlus,
-          mdiAccountCheck,
-          mdiClock,
-          mdiPauseCircleOutline,
-          mdiEyeOutline,
-          mdiBackupRestore,
-          mdiCheckCircleOutline
-        ],
-      }
+    computed: mapGetters(['tasks', 'colors', 'icons']),
+    methods: mapActions(['fetchTasks']),
+    async mounted() {
+      this.fetchTasks('https://furorprogress.uz/test/fp/test-tasks?page=1&perPage=100')
     },
-    mounted() {
-      fetch('https://furorprogress.uz/test/fp/test-tasks?page=1&perPage=10')
-        .then(response => response.json())
-        .then(json => this.tasks = json.rows)
-    },
-    components:{
-      TasksList
+    components: {
+      TasksList, FilterTasks
     }
   }
 </script>
 
 <style lang="scss" scoped>
-
+.no_tasks{
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: black;
+}
 </style>

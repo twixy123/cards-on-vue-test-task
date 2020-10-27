@@ -46,7 +46,7 @@
 
   #app{
     display: grid;
-    grid-row-gap: 80px;
+    grid-row-gap: 40px;
     grid-auto-rows: minmax(80px, auto);
   }
 

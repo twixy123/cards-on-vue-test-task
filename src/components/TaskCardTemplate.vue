@@ -43,7 +43,7 @@
 
         <p class="card_template__description_status">
           <span>Статус:</span>
-          <span>В процессе</span>
+          <span>{{task.task_statuses_name}}</span>
         </p>
 
         <router-link :to="'/task/' + task.id">Детально »</router-link>
@@ -70,7 +70,6 @@
     },
     methods:{
       showCard(task){
-        console.log(task)
         let thisDiv = this.$el
         let btn = thisDiv.querySelector('.showCard')
         btn.classList.toggle('down')
@@ -93,7 +92,6 @@
 <style lang="scss" scoped>
   .card_template {
     border-radius: 10px;
-    /*background : #00CEC9;*/
     padding: 20px;
     display: flex;
     flex-direction: column;
