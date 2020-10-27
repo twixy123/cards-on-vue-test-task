@@ -54,14 +54,14 @@ export default {
           '#D6A2E8',
         ],
         platform: [
-          '#ffffff',
+          '#E5E5E5',
           '#A29BFE',
           '#6C5CE7',
           '#B2BEC3',
           '#00B894',
         ],
         priority: [
-          '#ffffff',
+          '#E5E5E5',
           '#E17055',
           '#00B894',
           '#FBC531',
